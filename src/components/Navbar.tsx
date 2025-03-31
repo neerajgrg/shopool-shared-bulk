@@ -1,14 +1,30 @@
 
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { Search, ShoppingCart, User, Menu } from 'lucide-react';
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { Search, ShoppingCart, User, Menu, Tags } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useIsMobile } from '@/hooks/use-mobile';
+import { 
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { toast } from 'sonner';
 
 const Navbar = () => {
   const isMobile = useIsMobile();
-  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
+
+  const handleTagsClick = () => {
+    toast.info("Browsing by tags", {
+      description: "Showing all available product categories"
+    });
+    // In a real app, this would navigate to a tags/categories page
+    navigate('/#categories');
+  };
 
   return (
     <nav className="border-b">
@@ -38,8 +54,29 @@ const Navbar = () => {
           {/* Desktop Navigation */}
           {!isMobile && (
             <div className="flex items-center space-x-4">
-              <Button variant="ghost">Categories</Button>
-              <Button variant="ghost">How It Works</Button>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="ghost" className="flex items-center gap-1">
+                    <Tags className="h-4 w-4" />
+                    Categories
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="w-56 bg-white">
+                  <DropdownMenuItem onClick={() => navigate('/?category=groceries')}>
+                    Groceries
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => navigate('/?category=electronics')}>
+                    Electronics
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => navigate('/?category=clothing')}>
+                    Clothing
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => navigate('/?category=furniture')}>
+                    Furniture
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+              <Button variant="ghost" onClick={() => navigate('/#how-it-works')}>How It Works</Button>
               <Button variant="ghost">
                 <ShoppingCart className="h-5 w-5" />
               </Button>
@@ -81,7 +118,14 @@ const Navbar = () => {
                 className="w-full"
               />
             </div>
-            <Button variant="ghost" className="w-full justify-start">Categories</Button>
+            <Button 
+              variant="ghost" 
+              className="w-full justify-start"
+              onClick={handleTagsClick}
+            >
+              <Tags className="h-4 w-4 mr-2" />
+              Categories
+            </Button>
             <Button variant="ghost" className="w-full justify-start">How It Works</Button>
             <Button variant="ghost" className="w-full justify-start">Sign In</Button>
             <Button className="w-full">Sell on Shopool</Button>

@@ -11,7 +11,7 @@ import {
 } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import ProgressBar from '@/components/ProgressBar';
+import DealStatusCard from '@/components/DealStatusCard';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent } from '@/components/ui/card';
@@ -82,6 +82,14 @@ const ProductDetail = () => {
   const percentageFilled = (product.currentUnits / product.totalUnits) * 100;
   const remainingUnits = product.totalUnits - product.currentUnits;
   
+  // Deal metrics for visualization
+  const dealMetrics = {
+    totalBuyers: Math.ceil(product.currentUnits / 10),
+    averageOrderSize: Math.round((product.currentUnits / Math.ceil(product.currentUnits / 10)) * 10) / 10,
+    joinRate: Math.round(product.totalUnits / product.daysLeft / 24),
+    timeLeft: product.daysLeft
+  };
+  
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
@@ -95,6 +103,16 @@ const ProductDetail = () => {
                   src={product.image} 
                   alt={product.name} 
                   className="w-full h-auto object-cover aspect-square"
+                />
+              </div>
+              
+              {/* Add Deal Status Card below image on mobile */}
+              <div className="mt-6 lg:hidden">
+                <DealStatusCard
+                  currentAmount={product.currentUnits}
+                  totalAmount={product.totalUnits}
+                  daysLeft={product.daysLeft}
+                  dealMetrics={dealMetrics}
                 />
               </div>
             </div>
@@ -125,20 +143,14 @@ const ProductDetail = () => {
                   </p>
                 </div>
                 
-                <div className="mb-6">
-                  <ProgressBar 
-                    currentAmount={product.currentUnits} 
+                {/* Deal Status Card for desktop */}
+                <div className="hidden lg:block mb-6">
+                  <DealStatusCard
+                    currentAmount={product.currentUnits}
                     totalAmount={product.totalUnits}
-                    className="mb-2"
+                    daysLeft={product.daysLeft}
+                    dealMetrics={dealMetrics}
                   />
-                  <div className="flex justify-between text-sm">
-                    <span className="text-gray-600">
-                      <span className="font-medium">{Math.ceil(product.currentUnits / 10)}</span> buyers so far
-                    </span>
-                    <span className="text-gray-600">
-                      <span className="font-medium">{remainingUnits}</span> {product.unitType}s remaining
-                    </span>
-                  </div>
                 </div>
                 
                 <div className="flex flex-col md:flex-row gap-4 mb-6">
