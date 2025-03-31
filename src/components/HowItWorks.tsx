@@ -6,18 +6,18 @@ import { Search, Users, ShoppingBag, Truck } from 'lucide-react';
 const steps = [
   {
     icon: <Search className="h-10 w-10 text-shopool-600" />,
-    title: "Find Bulk Deals",
+    title: "Find Pools",
     description: "Browse through a wide range of wholesale products available for group buying."
   },
   {
     icon: <Users className="h-10 w-10 text-shopool-600" />,
     title: "Join a Pool",
-    description: "Specify the quantity you need and join others in splitting the bulk order."
+    description: "Specify the quantity you need and join others in splitting the wholesale order."
   },
   {
     icon: <ShoppingBag className="h-10 w-10 text-shopool-600" />,
     title: "Pay Your Share",
-    description: "Pay only for your portion of the order at the wholesale price."
+    description: "Pay only for your portion at wholesale prices and save together."
   },
   {
     icon: <Truck className="h-10 w-10 text-shopool-600" />,
@@ -33,7 +33,7 @@ const HowItWorks = () => {
         <div className="text-center mb-10">
           <h2 className="text-3xl font-bold mb-2">How Shopool Works</h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            Shopool connects you with others to split large wholesale orders, 
+            Shopool connects you with others to join wholesale pools, 
             allowing you to buy exactly what you need at wholesale prices.
           </p>
         </div>

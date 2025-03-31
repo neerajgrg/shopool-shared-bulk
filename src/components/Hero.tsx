@@ -12,15 +12,15 @@ const Hero = () => {
         <div className="flex flex-col md:flex-row items-center">
           <div className="md:w-1/2 mb-8 md:mb-0">
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              Split Bulk Orders, <br />
+              Join the Pool, <br />
               <span className="text-shopool-600">Save Together</span>
             </h1>
             <p className="text-lg md:text-xl text-gray-600 mb-6 max-w-lg">
-              Shopool connects you with others to split large wholesale orders. Buy exactly what you need at wholesale prices.
+              Shopool connects you with others to join wholesale pools. Get exactly what you need at wholesale prices without the bulk commitment.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button size="lg" className="bg-shopool-600 hover:bg-shopool-700">
-                Browse Bulk Deals
+                Browse Pools
               </Button>
               <Button size="lg" variant="outline" className="border-shopool-600 text-shopool-600 hover:bg-shopool-50">
                 How It Works

@@ -41,7 +41,7 @@ const Navbar = () => {
               <div className="relative">
                 <Input
                   type="text"
-                  placeholder="Search for bulk products..."
+                  placeholder="Search for pools and products..."
                   className="w-full py-2 pr-10 pl-4"
                 />
                 <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
@@ -84,7 +84,7 @@ const Navbar = () => {
                 <User className="h-5 w-5 mr-2" />
                 Sign In
               </Button>
-              <Button>Sell on Shopool</Button>
+              <Button>Create a Pool</Button>
             </div>
           )}
 
@@ -114,7 +114,7 @@ const Navbar = () => {
             <div className="px-2 pb-3">
               <Input
                 type="text"
-                placeholder="Search for bulk products..."
+                placeholder="Search for pools and products..."
                 className="w-full"
               />
             </div>
@@ -128,7 +128,7 @@ const Navbar = () => {
             </Button>
             <Button variant="ghost" className="w-full justify-start">How It Works</Button>
             <Button variant="ghost" className="w-full justify-start">Sign In</Button>
-            <Button className="w-full">Sell on Shopool</Button>
+            <Button className="w-full">Create a Pool</Button>
           </div>
         )}
       </div>

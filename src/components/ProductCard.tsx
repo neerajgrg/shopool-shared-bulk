@@ -86,7 +86,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         </CardContent>
         <CardFooter className="bg-gray-50 p-4 border-t">
           <p className="text-sm text-gray-600">
-            Join {Math.ceil(currentUnits / 10)} others in this bulk order
+            Join {Math.ceil(currentUnits / 10)} others in this pool
           </p>
         </CardFooter>
       </Card>

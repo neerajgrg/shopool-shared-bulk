@@ -184,7 +184,7 @@ const ProductDetail = () => {
                   onClick={handleJoinPool}
                   className="w-full bg-shopool-600 hover:bg-shopool-700 h-12 text-lg"
                 >
-                  Join This Bulk Order
+                  Join This Pool
                 </Button>
                 
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-6">
